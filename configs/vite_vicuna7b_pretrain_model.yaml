@@ -1,0 +1,50 @@
+{
+  "freeze_vit": true,
+  "freeze_llm": true,
+  "freeze_lm_embeddings": false,
+  "pretrained_model_path": "/path/to/vite_vicuna7b_bf16.ckpt", # "path to .pt",
+  "image_token_id": 32001,
+  "eoc_token_id": 32000,
+  "cross_attn_every_n_layers": 4,
+  "use_grad_checkpoint": false,
+  "visual": {
+    "image_size": 224,
+    "layers": 64,
+    "width": 1792,
+    "head_width": 112,
+    "patch_size": 14,
+    "mlp_ratio": 8.571428571428571,
+    "eva_model_name": "eva-clip-4b-14-x",
+    "drop_path_rate": 0.0,
+    "xattn": false,
+    "postnorm": true,
+    "fusedLN": false,
+    "embed_dim": 1024
+  },
+  "language": {
+    "_name_or_path": "lmsys/vicuna-7b-v1.5",
+    "architectures": [
+        "LlamaForCausalLM"
+    ],
+    "bos_token_id": 1,
+    "eos_token_id": 2,
+    "hidden_act": "silu",
+    "hidden_size": 4096,
+    "initializer_range": 0.02,
+    "intermediate_size": 11008,
+    "max_position_embeddings": 4096,
+    "model_type": "llama",
+    "num_attention_heads": 32,
+    "num_hidden_layers": 32,
+    "num_key_value_heads": 32,
+    "pad_token_id": 0,
+    "pretraining_tp": 1,
+    "rms_norm_eps": 1e-05,
+    "rope_scaling": null,
+    "tie_word_embeddings": false,
+    "torch_dtype": "bfloat16",
+    "transformers_version": "4.32.0.dev0",
+    "use_cache": true,
+    "vocab_size": 32002
+  }
+}
