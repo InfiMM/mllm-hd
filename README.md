@@ -1,5 +1,5 @@
 # Notice
-In this repo, we provide the pretrain code and model. Is utilize resolution of 224. If you want to use the high-resolution model (after all of the four stages), please refer to our hugging face web.
+In this repo, we provide the pretrain code and model. It utilizes resolution of 224. If you want to use the high-resolution model (after all of the four training stages), please refer to our hugging face page at https://huggingface.co/Infi-MM/infimm-hd.
 # Pretrain model
 Just download the model at https://huggingface.co/lllliuhhhhggg/infimm_pretrain/tree/main. We provide two pretraining models in our paper (only stage1) https://arxiv.org/abs/2403.01487. It is a Flamingo style model, the only difference is we remove the perceiver resampler. We use vit-e and vicuna in our model.
 These models are pretrained on mmc4, obelisc, coyo238m (sampled from coyo700m), laion115m, laioncoco. Our model's training speed is much faster than LLaVA due to the cross attention information fusion (using same amount of data). Feel free to build something from our pretrained model. 
