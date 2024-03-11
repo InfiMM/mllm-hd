@@ -36,7 +36,7 @@ for round_num, round in enumerate(qas):
     if round_num == 0:
         question = system + ' USER: ' + round['question'] + ' ASSISTANT: '
     else:
-        question = 'USER: ' + text + " " + 'ASSISTANT: '
+        question = 'USER: ' + round['question'] + " " + 'ASSISTANT: '
     question_token = tokenizer(
         [question],
         return_tensors="pt",
