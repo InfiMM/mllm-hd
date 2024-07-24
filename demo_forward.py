@@ -4,6 +4,19 @@ from open_clip.transform import image_transform
 from PIL import Image
 from model import InfiMMModel
 
+OPENAI_IMAGE_MEAN = [0.48145466, 0.4578275, 0.40821073]
+def expand2square(pil_img, background_color):
+    width, height = pil_img.size
+    if width == height:
+        return pil_img
+    elif width > height:
+        result = Image.new(pil_img.mode, (width, width), background_color)
+        result.paste(pil_img, (0, (width - height) // 2))
+        return result
+    else:
+        result = Image.new(pil_img.mode, (height, height), background_color)
+        result.paste(pil_img, ((height - width) // 2, 0))
+        return result
 
 ### init the model ###
 with open('/opt/tiger/infimm-hd/configs/vite_vicuna7b_pretrain_model.yaml', 'r') as f:
@@ -15,7 +28,8 @@ model = InfiMMModel(config)
 # images loading and processing
 img_processor = image_transform(image_size=224, is_train=False) # do not use data augmentation in training as it may destroy the spatial info
 image_list = ["1.jpg"]
-imgs = [Image.open(img_path) for img_path in image_list]
+imgs = [Image.open(img_path).convert("RGB") for img_path in image_list]
+imgs = [expand2square(img, tuple(int(x*255) for x in OPENAI_IMAGE_MEAN)) for img in imgs]
 imgs = [img_processor(img) for img in imgs]
 images = torch.stack(imgs) # if the sample is only text, just creat a fake img, e.g. images = torch.randn(1, 3, 224, 224) 
 # remember to make the image to [bs, t, f, c, h, w], in llava665k ,t=f=1
