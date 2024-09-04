@@ -23,12 +23,13 @@ https://github.com/mlfoundations/open_flamingo
 # Citation
 
 ```latex
-@misc{liu2024infimmhd,
+@misc{liu2024infimmhdleapforwardhighresolution,
       title={InfiMM-HD: A Leap Forward in High-Resolution Multimodal Understanding}, 
       author={Haogeng Liu and Quanzeng You and Xiaotian Han and Yiqi Wang and Bohan Zhai and Yongfei Liu and Yunzhe Tao and Huaibo Huang and Ran He and Hongxia Yang},
       year={2024},
       eprint={2403.01487},
       archivePrefix={arXiv},
-      primaryClass={cs.CV}
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2403.01487}, 
 }
 ```
